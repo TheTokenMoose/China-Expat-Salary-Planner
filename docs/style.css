@@ -1,0 +1,604 @@
+* {
+
+box-sizing:border-box;
+
+}
+
+
+
+body {
+
+font-family:
+
+Arial, Helvetica, sans-serif;
+
+background:#f4f6f8;
+
+margin:0;
+
+padding:0;
+
+color:#222;
+
+}
+
+
+
+.container {
+
+max-width:1100px;
+
+margin:auto;
+
+padding:20px;
+
+}
+
+
+
+
+header {
+
+text-align:center;
+
+background:white;
+
+padding:25px;
+
+border-radius:12px;
+
+margin-bottom:20px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+
+
+header h1 {
+
+margin-bottom:5px;
+
+}
+
+
+
+
+
+
+
+section {
+
+background:white;
+
+padding:20px;
+
+margin-bottom:20px;
+
+border-radius:12px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.06);
+
+}
+
+
+
+
+h2 {
+
+margin-top:0;
+
+color:#333;
+
+}
+
+
+
+
+label {
+
+display:block;
+
+margin-top:12px;
+
+font-weight:bold;
+
+}
+
+
+
+
+input,
+select {
+
+padding:10px;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+font-size:15px;
+
+margin-top:5px;
+
+}
+
+
+
+
+button {
+
+padding:10px 16px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+background:#2563eb;
+
+color:white;
+
+font-size:15px;
+
+margin-top:15px;
+
+}
+
+
+
+button:hover {
+
+opacity:.9;
+
+}
+
+
+
+.main-button {
+
+width:100%;
+
+font-size:18px;
+
+padding:15px;
+
+background:#16a34a;
+
+}
+
+
+
+
+.tax-button {
+
+width:100%;
+
+background:#475569;
+
+}
+
+
+
+
+
+.small-note {
+
+font-size:14px;
+
+color:#666;
+
+line-height:1.5;
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   PHILOSOPHY
+===================== */
+
+
+.philosophy-box {
+
+border-left:5px solid #2563eb;
+
+}
+
+
+
+
+.about-box {
+
+border-left:5px solid #16a34a;
+
+}
+
+
+
+
+
+
+
+/* =====================
+   DATE
+===================== */
+
+
+.date-grid {
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+}
+
+
+
+.date-grid input {
+
+width:80px;
+
+}
+
+
+
+
+
+
+
+/* =====================
+   CARDS
+===================== */
+
+
+.card {
+
+margin-top:20px;
+
+padding:15px;
+
+background:#f1f5f9;
+
+border-radius:10px;
+
+}
+
+
+
+
+.summary-grid {
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(200px,1fr));
+
+gap:15px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.summary-card {
+
+background:#f8fafc;
+
+padding:20px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+
+
+
+.summary-card strong {
+
+display:block;
+
+font-size:26px;
+
+margin-top:10px;
+
+}
+
+
+
+
+
+
+
+/* MAIN TAKE HOME */
+
+.take-home-card {
+
+background:#dcfce7;
+
+border-radius:15px;
+
+padding:30px;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+
+
+.take-home-card h2 {
+
+font-size:22px;
+
+}
+
+
+
+.take-home-value {
+
+font-size:42px;
+
+font-weight:bold;
+
+color:#15803d;
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+   DYNAMIC ROWS
+===================== */
+
+
+.dynamic-row {
+
+background:#f8fafc;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+padding:15px;
+
+margin-top:15px;
+
+}
+
+
+
+
+
+
+
+/* =====================
+   TABLE
+===================== */
+
+
+table {
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+
+
+th,
+td {
+
+padding:10px;
+
+border-bottom:1px solid #ddd;
+
+text-align:center;
+
+}
+
+
+
+th {
+
+background:#f1f5f9;
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   TAX GUIDE
+===================== */
+
+
+.flow {
+
+background:#f8fafc;
+
+padding:20px;
+
+border-radius:10px;
+
+text-align:center;
+
+font-size:18px;
+
+line-height:2;
+
+}
+
+
+
+
+
+
+.hidden {
+
+display:none;
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   MODE SELECTOR
+===================== */
+
+
+.mode-selector label {
+
+display:inline-block;
+
+margin-right:20px;
+
+background:#f1f5f9;
+
+padding:12px;
+
+border-radius:8px;
+
+}
+
+
+
+
+
+
+
+/* =====================
+   INSURANCE
+===================== */
+
+
+.insurance-grid {
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(150px,1fr));
+
+gap:15px;
+
+margin-top:15px;
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+   FOOTER
+===================== */
+
+
+footer {
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #555;
+
+    padding: 20px;
+
+}
+
+footer ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 10px auto;
+
+}
+
+footer li {
+
+    margin: 4px 0;
+
+}
+
+
+
+
+
+/* =====================
+   MOBILE
+===================== */
+
+
+@media(max-width:700px){
+
+
+.container {
+
+padding:10px;
+
+}
+
+
+
+.date-grid {
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.summary-grid {
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.take-home-value {
+
+font-size:32px;
+
+}
+
+
+
+}
