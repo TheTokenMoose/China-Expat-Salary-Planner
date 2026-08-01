@@ -1,0 +1,42 @@
+{
+  "name": "china-expat-salary-planner",
+  "version": "0.7.0",
+  "description": "A salary planning tool for expats working in China.",
+  "main": "main.js",
+
+  "author": "David Templeton",
+  "license": "Freeware - Non-Commercial Use Only",
+
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+
+  "build": {
+
+    "appId": "com.davidtempleton.salaryplanner",
+
+    "productName": "China Expat Salary Planner",
+
+    "files": [
+      "**/*",
+      "LICENSE.txt"
+    ],
+
+    "win": {
+
+      "icon": "assets/icon.ico",
+
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+
+    }
+
+  }
+}
