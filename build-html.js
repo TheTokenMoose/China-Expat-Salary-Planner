@@ -1,29 +1,61 @@
 const fs = require("fs");
 const path = require("path");
 
-const htmlPath = path.join(__dirname, "index.html");
-const cssPath = path.join(__dirname, "style.css");
-const jsPath = path.join(__dirname, "app.js");
+const root = __dirname;
 
-let html = fs.readFileSync(htmlPath, "utf8");
-const css = fs.readFileSync(cssPath, "utf8");
-const js = fs.readFileSync(jsPath, "utf8");
+const htmlPath = path.join(root, "index.html");
+const cssPath = path.join(root, "style.css");
+const jsPath = path.join(root, "app.js");
 
-// Replace CSS link
+const docsPath = path.join(root, "docs");
+
+
+// Create docs folder if missing
+
+if (!fs.existsSync(docsPath)) {
+    fs.mkdirSync(docsPath);
+}
+
+
+// Read files
+
+let html = fs.readFileSync(
+    htmlPath,
+    "utf8"
+);
+
+const css = fs.readFileSync(
+    cssPath,
+    "utf8"
+);
+
+const js = fs.readFileSync(
+    jsPath,
+    "utf8"
+);
+
+
+// Replace CSS
+
 html = html.replace(
     '<link rel="stylesheet" href="style.css">',
     `<style>\n${css}\n</style>`
 );
 
-// Replace JS script
+
+// Replace JS
+
 html = html.replace(
     '<script src="app.js"></script>',
     `<script>\n${js}\n</script>`
 );
 
+
+// Write GitHub Pages version
+
 const output = path.join(
-    __dirname,
-    "China-Expat-Salary-Planner.html"
+    docsPath,
+    "index.html"
 );
 
 fs.writeFileSync(
@@ -32,5 +64,30 @@ fs.writeFileSync(
     "utf8"
 );
 
-console.log("Created:");
+
+// Copy assets
+
+const assetsSource =
+path.join(root, "assets");
+
+const assetsDestination =
+path.join(docsPath, "assets");
+
+
+if(fs.existsSync(assetsSource)){
+
+    fs.cpSync(
+        assetsSource,
+        assetsDestination,
+        {
+            recursive:true
+        }
+    );
+
+}
+
+
+// Copy standalone files needed by Pages
+
+console.log("Created browser version:");
 console.log(output);

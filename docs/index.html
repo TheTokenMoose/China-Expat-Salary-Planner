@@ -1,998 +1,2257 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <title>
 China Expat Salary Planner v0.7
 </title>
+<style>
+/* =========================================================
+   China Expat Salary Planner
+   v0.8 UI Refresh
+   ========================================================= */
 
-<link rel="stylesheet" href="style.css">
 
+/* =========================
+   Global Reset
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    background: #f4f6f9;
+
+    color: #1f2937;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =========================
+   Main Container
+   ========================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 30px 20px 50px;
+
+}
+
+
+
+/* =========================
+   Header
+   ========================= */
+
+header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+header h1 {
+
+    margin: 0;
+
+    font-size: 2.4rem;
+
+    font-weight: 700;
+
+    color: #111827;
+
+}
+
+
+
+header p {
+
+    margin: 8px 0;
+
+    color: #6b7280;
+
+}
+
+
+
+header p:last-child {
+
+    display: inline-block;
+
+    background: #e5e7eb;
+
+    padding: 5px 14px;
+
+    border-radius: 20px;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+/* =========================
+   Cards / Sections
+   ========================= */
+
+section {
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.05);
+
+}
+
+
+
+section h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 18px;
+
+    font-size: 1.35rem;
+
+    color: #111827;
+
+}
+
+
+
+section h3 {
+
+    color: #374151;
+
+}
+
+
+
+.philosophy-box,
+.about-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8fafc
+        );
+
+}
+
+
+
+/* =========================
+   Text
+   ========================= */
+
+.small-note {
+
+    color: #6b7280;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+p {
+
+    margin-top: 10px;
+
+}
+
+
+
+/* =========================
+   Labels
+   ========================= */
+
+label {
+
+    display: block;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+
+}
+
+
+
+/* =========================
+   Inputs
+   ========================= */
+
+input,
+select {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    font-size: 1rem;
+
+    color: #111827;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+
+}
+
+
+
+input:focus,
+select:focus {
+
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,0.15);
+
+}
+
+
+
+/* Date inputs */
+
+.date-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+
+
+.date-grid input {
+
+    width: 70px;
+
+    display: inline-block;
+
+}
+
+
+
+/* =========================
+   Buttons
+   ========================= */
+
+button {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 12px 18px;
+
+    background: #e5e7eb;
+
+    color: #111827;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+
+        transform .15s ease,
+
+        background .15s ease,
+
+        box-shadow .15s ease;
+
+}
+
+
+
+button:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+
+
+.main-button {
+
+    width: 100%;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    padding: 16px;
+
+}
+
+
+
+.main-button:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+
+.tax-button {
+
+    width: 100%;
+
+    background: #f3f4f6;
+
+}
+
+
+
+/* =========================
+   Radio buttons
+   ========================= */
+
+input[type="radio"] {
+
+    width: auto;
+
+    margin-right: 8px;
+
+}
+
+
+
+/* =========================
+   Special Cards
+   ========================= */
+
+.card {
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    padding: 18px;
+
+    margin-top: 20px;
+
+    border-left:
+
+        4px solid #2563eb;
+
+}
+
+
+
+/* =========================
+   Results Area
+   ========================= */
+
+#results {
+
+    min-height: 80px;
+
+}
+
+
+
+#results strong {
+
+    font-size: 1.4rem;
+
+}
+
+
+
+/* =========================
+   Grids
+   ========================= */
+
+.insurance-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(2,1fr);
+
+    gap: 15px;
+
+}
+
+
+
+.insurance-grid label {
+
+    background: #f9fafb;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+}
+
+
+
+/* =========================
+   Flow Diagram
+   ========================= */
+
+.flow {
+
+    background:
+
+        #f8fafc;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================
+   Lists
+   ========================= */
+
+ul {
+
+    padding-left: 20px;
+
+}
+
+
+
+li {
+
+    margin-bottom: 8px;
+
+}
+
+
+
+/* =========================
+   Footer
+   ========================= */
+
+footer {
+
+    text-align: center;
+
+    color: #6b7280;
+
+    font-size: 0.9rem;
+
+    padding: 30px 20px;
+
+}
+
+
+
+footer h3 {
+
+    color: #374151;
+
+}
+
+
+
+footer hr {
+
+    border: none;
+
+    border-top: 1px solid #e5e7eb;
+
+    margin: 25px 0;
+
+}
+
+
+
+/* =========================
+   Hidden Elements
+   ========================= */
+
+.hidden {
+
+    display: none;
+
+}
+
+
+
+/* =========================
+   Responsive Mobile Layout
+   ========================= */
+
+@media (max-width: 700px) {
+
+
+    .container {
+
+        padding: 15px;
+
+    }
+
+
+    header h1 {
+
+        font-size: 1.8rem;
+
+    }
+
+
+    section {
+
+        padding: 18px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .date-grid,
+    .insurance-grid {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+    button {
+
+        width: 100%;
+
+        margin-bottom: 10px;
+
+    }
+
+
+}
+/* =========================
+   Planner Groups
+   ========================= */
+
+.planner-group {
+
+    margin-bottom: 35px;
+
+}
+
+
+.group-title {
+
+    font-size: 1.5rem;
+
+    color: #111827;
+
+    margin: 35px 0 15px;
+
+    padding-left: 5px;
+
+}
+.group-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.group-title::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #e5e7eb;
+
+}
+/* ==========================================
+   Results Dashboard
+========================================== */
+
+.results-card{
+
+    border-top:6px solid #2563eb;
+
+}
+
+
+.results-card h2{
+
+    font-size:1.8rem;
+
+    margin-bottom:20px;
+
+}
+
+
+.results-placeholder{
+
+    text-align:center;
+
+    color:#6b7280;
+
+    padding:35px;
+
+    border:2px dashed #d1d5db;
+
+    border-radius:10px;
+
+    background:#f9fafb;
+
+}
+/* ==================================
+   Hero Result
+================================== */
+
+.hero-result{
+
+    text-align:center;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    padding:40px;
+
+    border-radius:14px;
+
+    margin-bottom:25px;
+
+}
+
+
+.hero-title{
+
+    font-size:1rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    opacity:.9;
+
+}
+
+
+.hero-value{
+
+    font-size:3.5rem;
+
+    font-weight:700;
+
+    margin:15px 0;
+
+}
+
+
+.hero-subtitle{
+
+    opacity:.9;
+
+}
+
+
+
+/* ==================================
+   Summary Grid
+================================== */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+}
+
+
+.summary-card{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+
+}
+
+
+.summary-card span{
+
+    display:block;
+
+    color:#6b7280;
+
+    margin-bottom:10px;
+
+}
+
+
+.summary-card strong{
+
+    display:block;
+
+    font-size:1.6rem;
+
+}
+
+
+
+/* ==================================
+   Results Table
+================================== */
+
+.results-section table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+.results-section th{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:12px;
+
+}
+
+
+.results-section td{
+
+    padding:10px;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+
+.results-section tr:nth-child(even){
+
+    background:#f8fafc;
+
+}
+/* ==============================
+   PDF PRINT MODE
+================================ */
+
+@media print {
+
+
+body {
+
+    background:white;
+
+}
+
+
+button {
+
+    display:none;
+
+}
+
+
+.report-actions {
+
+    display:none;
+
+}
+
+
+header {
+
+    display:block;
+
+}
+
+
+.results-card {
+
+    box-shadow:none;
+
+}
+
+
+}
+</style>
 </head>
-
-
 <body>
-
-
 <div class="container">
-
-
 <header>
-
 <h1>
 China Expat Salary Planner
 </h1>
-
-
 <p>
-Understand your real financial position in China
+Estimate your real take-home income while working in China
 </p>
-
-
 <p>
-Version 0.7
+Version 0.8 Beta
 </p>
-
-
 </header>
-
-
-
-
-
 <section class="philosophy-box">
-
-
 <h3>
 Why this tool exists
 </h3>
-
-
 <p>
-
 This calculator helps expats understand their expected take-home income in China.
-
 It uses available tax rules, mathematical modelling, and user-provided information to provide an estimate.
-
 It is designed to improve transparency and help users make informed decisions.
-
 </p>
-
-
 <p>
-
 This is not a payroll system and does not replace HR departments, employers, government calculations, or professional tax advice.
-
 </p>
-
-
 </section>
-
-
-
-
-
-
-
+<div class="planner-group">
+<h2 class="group-title">
+1. Basic Information
+</h2>
 <section class="mode-selector">
-
-
 <h2>
 Calculation Mode
 </h2>
-
-
 <label>
-
 <input
 type="radio"
 name="calcMode"
 value="quick"
 checked
 onchange="toggleMode()">
-
 Quick Estimate
-
 </label>
-
-
-
 <label>
-
 <input
 type="radio"
 name="calcMode"
 value="full"
 onchange="toggleMode()">
-
 Full Contract Planner
-
 </label>
-
-
-
 <p class="small-note">
-
 Quick mode provides a fast estimate.
-
 Full mode includes contract timeline, previous income, salary changes, bonuses and benefits.
-
 </p>
-
-
 </section>
-
-
-
-
-
-
-
 <section>
-
-
 <h2>
 Contract Period
 </h2>
-
-
 <div class="date-grid">
-
-
 <div>
-
 <label>
 Start Date
 </label>
-
-
 <input id="startDay" placeholder="DD">
-
 /
-
 <input id="startMonth" placeholder="MM">
-
 /
-
 <input id="startYear" placeholder="YYYY">
-
-
 </div>
-
-
-
-
 <div>
-
 <label>
 End Date
 </label>
-
-
 <input id="endDay" placeholder="DD">
-
 /
-
 <input id="endMonth" placeholder="MM">
-
 /
-
 <input id="endYear" placeholder="YYYY">
-
-
 </div>
-
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
 <section>
-
-
 <h2>
 Tax Residency
 </h2>
-
-
 <select id="taxResidency">
-
-
 <option value="unsure">
 Unsure - Resident Estimate
 </option>
-
-
 <option value="resident">
 China Tax Resident
 </option>
-
-
 <option value="nonresident">
 China Non-Resident
 </option>
-
-
 </select>
-
-
 </section>
-
-
-
-
-
-
-
+<div class="planner-group">
+<h2 class="group-title">
+2. Income & Benefits
+</h2>
 <section>
-
-
 <h2>
 Salary Timeline
 </h2>
-
-
 <label>
 Salary Type
 </label>
-
-
 <select id="salaryType">
-
-
 <option value="monthly">
 Monthly Salary
 </option>
-
-
 <option value="annual">
 Annual Salary
 </option>
-
-
 </select>
-
-
 <label>
 Starting Salary Amount (RMB)
 </label>
-
-
 <input
 id="salaryAmount"
 type="number"
 value="30000">
-
-
-
 <div id="fullOnly">
-
-
 <button onclick="addSalaryAdjustment()">
-
 + Add Salary Change / Adjustment
-
 </button>
-
-
 <div id="salaryAdjustmentContainer">
-
 </div>
-
-
 </div>
-
-
 <div class="card">
-
 Starting Monthly Salary:
-
 <strong id="monthlyDisplay">
-
 ¥30000
-
 </strong>
-
-
 </div>
-
-
 </section>
 <!-- ==============================
      PREVIOUS INCOME
 ================================ -->
-
-
 <section id="fullOnlySection">
-
-
 <h2>
 Previous Calendar Income
 </h2>
-
-
 <p class="small-note">
-
 For accurate China cumulative tax calculations, add income and tax already received before this contract starts.
-
 </p>
-
-
-
 <button onclick="addPreviousIncome()">
-
 + Add Previous Month
-
 </button>
-
-
-
 <div id="previousContainer">
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
 <!-- ==============================
      BONUSES
 ================================ -->
-
-
 <section id="fullOnlySection">
-
-
 <h2>
 Bonus Payments
 </h2>
-
-
 <p class="small-note">
-
 Bonuses are tracked separately because Chinese payroll may handle them differently from normal salary.
-
 </p>
-
-
-
 <button onclick="addBonus()">
-
 + Add Bonus
-
 </button>
-
-
-
 <div id="bonusContainer">
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
-
 <!-- ==============================
      BENEFITS
 ================================ -->
-
-
 <section id="fullOnlySection">
-
-
 <h2>
 Untaxed / Additional Benefits
-
 </h2>
-
-
 <p class="small-note">
-
 Add benefits such as housing, transport, flights, or other package items.
-
 </p>
-
-
-
 <button onclick="addBenefit()">
-
 + Add Benefit
-
 </button>
-
-
-
 <div id="benefitContainer">
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
+</div>
 <!-- ==============================
      SOCIAL INSURANCE
 ================================ -->
-
-
+<div class="planner-group">
+<h2 class="group-title">
+3. Deductions
+</h2>
 <section>
-
-
 <h2>
 Chinese Social Insurance
 </h2>
-
-
-
 <label>
-
 Are you paying Chinese Social Insurance?
-
 </label>
-
-
-
 <select id="insuranceEnabled"
 onchange="toggleInsurance()">
-
-
-
 <option value="no">
-
 No
-
 </option>
-
-
 <option value="yes">
-
 Yes
-
 </option>
-
-
 </select>
-
-
-
-
-
 <div id="insuranceSettings"
 class="hidden">
-
-
 <label>
-
 Location
-
 </label>
-
-
-
 <select id="insuranceLocation"
 onchange="loadInsurancePreset()">
-
-
-
 <option value="shanghai">
-
 Shanghai
-
 </option>
-
-
 <option value="beijing">
-
 Beijing
-
 </option>
-
-
 <option value="shenzhen">
-
 Shenzhen
-
 </option>
-
-
 <option value="guangzhou">
-
 Guangzhou
-
 </option>
-
-
 <option value="manual">
-
 Manual
-
 </option>
-
-
 </select>
-
-
-
-
-
-
 <div class="insurance-grid">
-
-
 <label>
-
 Pension %
-
 <input
 id="pensionRate">
-
 </label>
-
-
-
-
 <label>
-
 Medical %
-
 <input
 id="medicalRate">
-
 </label>
-
-
-
-
 <label>
-
 Unemployment %
-
 <input
 id="unemploymentRate">
-
 </label>
-
-
-
-
 <label>
-
 Housing %
-
 <input
 id="housingRate">
-
 </label>
-
-
-
 </div>
-
-
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
-
-<!-- ==============================
-     SCENARIO MANAGEMENT
-================================ -->
-
-
-<section>
-
-
-<h2>
-Scenario Management
-</h2>
-
-
-<p class="small-note">
-
-Save your salary plan or import a previous scenario to test different job offers or salary changes.
-
-</p>
-
-
-
-<button onclick="exportScenario()">
-
-Export Salary Plan
-
-</button>
-
-
-
-<button onclick="document.getElementById('importFile').click()">
-
-Import Salary Plan
-
-</button>
-
-
-
-<input
-type="file"
-id="importFile"
-accept=".json"
-class="hidden"
-onchange="importScenario(event)">
-
-
-</section>
-
-
-
-
-
-
-
-
-
+</div>
 <!-- ==============================
      CALCULATE
 ================================ -->
-
-
 <section>
-
-
 <button
 class="main-button"
 onclick="calculate()">
-
-
 Calculate Expected Take Home
-
-
 </button>
-
-
 </section>
-
-
-
-
-
-
-
-
 <!-- ==============================
      RESULTS
 ================================ -->
+<section id="results" class="results-card">
+<h2>
+Estimated Take-Home Pay
+</h2>
+<div class="results-placeholder">
+Complete the calculator and press
+<strong>Calculate Expected Take Home</strong>
+to see your personalised salary summary.
+</div>
+</section>
+<!-- ==============================
+     REPORT ACTIONS
+================================ -->
 
+<section class="report-actions">
 
-<section id="results">
+<h2>
+Save Your Results
+</h2>
 
+<p class="small-note">
+Download a PDF summary of your salary calculation.
+</p>
+
+<button onclick="exportPDF()">
+
+Download Salary Report PDF
+
+</button>
 
 </section>
 <!-- ==============================
      TAX EXPLANATION
 ================================ -->
-
-
 <section>
-
-
 <button
 class="tax-button"
 onclick="toggleTaxGuide()">
-
-
 ⓘ Explain How Chinese Tax Works
-
-
 </button>
-
-
-
 <div id="taxGuide" class="hidden">
-
-
 <h2>
 Chinese Tax Explained Simply
 </h2>
-
-
-
 <h3>
 1. China uses cumulative taxation
 </h3>
-
-
 <p>
-
 For tax residents, income earned since January is tracked cumulatively.
-
 This means someone starting in August may have a different tax calculation compared with someone who started in January.
-
 </p>
-
-
-
 <h3>
 2. The basic idea
 </h3>
-
-
 <div class="flow">
-
-
 Gross Income
-
 ↓
-
 Monthly deduction
-
 ↓
-
 Taxable Income
-
 ↓
-
 Tax Brackets
-
 ↓
-
 Tax Already Paid Removed
-
 ↓
-
 Final Tax Due
-
-
 </div>
-
-
-
-
 <h3>
 3. Why your tax changes during the year
-
 </h3>
-
-
 <p>
-
 Your monthly tax amount may increase or decrease because the system recalculates your position throughout the calendar year.
-
 </p>
-
-
-
 </div>
-
-
 </section>
-
-
-
-
-
-
-
-
-
 <!-- ==============================
      ABOUT
 ================================ -->
-
-
 <section class="about-box">
-
-
 <h2>
 About China Expat Salary Planner
 </h2>
-
-
 <p>
-
 This tool exists to help expats understand their financial position when working in China.
-
 </p>
-
-
 <p>
-
 Employment contracts can be difficult to interpret. Salary figures may not clearly explain taxes, deductions, contract timing, or actual take-home income.
-
 </p>
-
-
-
 <p>
-
 The goal is clarity, not false precision.
-
 </p>
-
-
-
 <ul>
-
 <li>
 Understand employment offers
 </li>
-
-
 <li>
 Compare salary scenarios
 </li>
-
-
 <li>
 Understand how raises affect income
 </li>
-
-
 <li>
 Ask better questions with HR
 </li>
-
-
 </ul>
-
-
-
 <h3>
 What this tool is not:
 </h3>
-
-
-
 <ul>
-
 <li>
 Not a payroll system
 </li>
-
-
 <li>
 Not a tax filing service
 </li>
-
-
 <li>
 Not a replacement for HR calculations
 </li>
-
-
 <li>
 Not professional tax advice
 </li>
-
-
 </ul>
-
-
-
 </section>
-
-
-
-
-
-
-
-
-
 <!-- ==============================
      FOOTER
 ================================ -->
-
 <footer>
-
 <h3>
 Disclaimer
 </h3>
-
 <p>
 This calculator provides estimates only.
 </p>
-
 <p>
 Actual salary payments may differ due to:
 </p>
-
 <ul>
-
 <li>
 Government policy changes
 </li>
-
 <li>
 Employer payroll methods
 </li>
-
 <li>
 Company or school policies
 </li>
-
 <li>
 Individual tax circumstances
 </li>
-
 <li>
 Social insurance requirements
 </li>
-
 </ul>
-
 <hr>
-
 <p>
-
 China Expat Salary Planner
-
 <br>
-
 Created by David Templeton
-
 <br>
-
 Version 0.7 Beta
-
 <br>
-
 Freeware - Non-Commercial Use Only
-
 </p>
-
 </footer>
+</div>
+<script src="node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+<script src="node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+<script>
+let previousCounter = 0;
+let salaryAdjustmentCounter = 0;
+let bonusCounter = 0;
+let benefitCounter = 0;
+// ==============================
+// TAX BRACKETS
+// ==============================
+const taxBrackets = [
+{
+limit:36000,
+rate:0.03,
+deduction:0
+},
+{
+limit:144000,
+rate:0.10,
+deduction:2520
+},
+{
+limit:300000,
+rate:0.20,
+deduction:16920
+},
+{
+limit:420000,
+rate:0.25,
+deduction:31920
+},
+{
+limit:660000,
+rate:0.30,
+deduction:52920
+},
+{
+limit:960000,
+rate:0.35,
+deduction:85920
+},
+{
+limit:Infinity,
+rate:0.45,
+deduction:181920
+}
+];
+// ==============================
+// INSURANCE PRESETS
+// ==============================
+const insurancePresets = {
+shanghai:{
+pension:8,
+medical:2,
+unemployment:0.5,
+housing:0
+},
+beijing:{
+pension:8,
+medical:2,
+unemployment:0.5,
+housing:5
+},
+shenzhen:{
+pension:8,
+medical:2,
+unemployment:0.3,
+housing:5
+},
+guangzhou:{
+pension:8,
+medical:2,
+unemployment:0.2,
+housing:5
+}
+};
+// ==============================
+// MODE SWITCH
+// ==============================
+function toggleMode(){
+let mode =
+document.querySelector(
+'input[name="calcMode"]:checked'
+)
+.value;
+let advanced =
+document.querySelectorAll(
+"#fullOnly,#fullOnlySection"
+);
+advanced.forEach(section=>{
+if(mode==="quick"){
+section.classList.add("hidden");
+}
+else{
+section.classList.remove("hidden");
+}
+});
+}
+// ==============================
+// SALARY DISPLAY
+// ==============================
+document
+.addEventListener(
+"DOMContentLoaded",
+()=>{
+let salary =
+document.getElementById(
+"salaryAmount"
+);
+let type =
+document.getElementById(
+"salaryType"
+);
+if(salary){
+salary.addEventListener(
+"input",
+updateSalary
+);
+}
+if(type){
+type.addEventListener(
+"change",
+updateSalary
+);
+}
+}
+);
+function updateSalary(){
+let amount =
+Number(
+document.getElementById(
+"salaryAmount"
+).value
+);
+if(
+document.getElementById(
+"salaryType"
+).value==="annual"
+){
+amount/=12;
+}
+document.getElementById(
+"monthlyDisplay"
+)
+.innerHTML =
+"¥"+amount.toFixed(0);
+}
+// ==============================
+// SALARY ADJUSTMENTS
+// ==============================
+function addSalaryAdjustment(){
+salaryAdjustmentCounter++;
+let id =
+"salaryAdjustment"+salaryAdjustmentCounter;
+let div =
+document.createElement("div");
+div.className="dynamic-row";
+div.id=id;
+div.innerHTML=`
+<label>
+Effective Month
+</label>
+<input
+type="month"
+class="adjustmentDate">
+<label class="adjustmentAmountLabel">
+New Monthly Salary
+</label>
+<input
+type="number"
+class="adjustmentSalary"
+value="0">
+<label>
+Adjustment Type
+</label>
+<select
+class="adjustmentType"
+onchange="updateAdjustmentLabel(this)">
+<option value="ongoing">
+From this month onwards
+</option>
+<option value="one_time">
+One-time adjustment
+</option>
+</select>
+<button onclick="removeRow('${id}')">
+Remove
+</button>
+`;
+document
+.getElementById(
+"salaryAdjustmentContainer"
+)
+.appendChild(div);
+}
+function updateAdjustmentLabel(select){
+let row =
+select.closest(".dynamic-row");
+let label =
+row.querySelector(
+".adjustmentAmountLabel"
+);
+if(
+select.value==="one_time"
+){
+label.innerHTML =
+"Additional Payment";
+}
+else{
+label.innerHTML =
+"New Monthly Salary";
+}
+}
+// ==============================
+// PREVIOUS INCOME
+// ==============================
+function addPreviousIncome(){
+previousCounter++;
+let id =
+"previous"+previousCounter;
+let div =
+document.createElement("div");
+div.className="dynamic-row";
+div.id=id;
+div.innerHTML=`
+<label>
+Month
+</label>
+<input
+type="month"
+class="previousMonth">
+<label>
+Gross Income
+</label>
+<input
+type="number"
+class="previousIncome"
+value="0">
+<label>
+Tax Paid
+</label>
+<input
+type="number"
+class="previousTax"
+value="0">
+<button onclick="removeRow('${id}')">
+Remove
+</button>
+`;
+document
+.getElementById(
+"previousContainer"
+)
+.appendChild(div);
+}
+// ==============================
+// BONUS
+// ==============================
+function addBonus(){
+bonusCounter++;
+let id =
+"bonus"+bonusCounter;
+let div =
+document.createElement("div");
+div.className="dynamic-row";
+div.id=id;
+div.innerHTML=`
+<label>
+Bonus Month
+</label>
+<input
+type="month"
+class="bonusDate">
+<label>
+Bonus Amount
+</label>
+<input
+type="number"
+class="bonusAmount"
+value="0">
+<button onclick="removeRow('${id}')">
+Remove
+</button>
+`;
+document
+.getElementById(
+"bonusContainer"
+)
+.appendChild(div);
+}
+// ==============================
+// BENEFITS
+// ==============================
+function addBenefit(){
+benefitCounter++;
+let id =
+"benefit"+benefitCounter;
+let div =
+document.createElement("div");
+div.className="dynamic-row";
+div.id=id;
+div.innerHTML=`
+<label>
+Benefit Name
+</label>
+<input
+class="benefitName">
+<label>
+Monthly Value
+</label>
+<input
+type="number"
+class="benefitAmount"
+value="0">
+<button onclick="removeRow('${id}')">
+Remove
+</button>
+`;
+document
+.getElementById(
+"benefitContainer"
+)
+.appendChild(div);
+}
+function removeRow(id){
+let row =
+document.getElementById(id);
+if(row){
+row.remove();
+}
+}
+// ==============================
+// INSURANCE
+// ==============================
+function toggleInsurance(){
+let value =
+document.getElementById(
+"insuranceEnabled"
+)
+.value;
+let box =
+document.getElementById(
+"insuranceSettings"
+);
+if(value==="yes"){
+box.classList.remove(
+"hidden"
+);
+}
+else{
+box.classList.add(
+"hidden"
+);
+}
+}
+function loadInsurancePreset(){
+let location =
+document.getElementById(
+"insuranceLocation"
+)
+.value;
+if(location==="manual")
+return;
+let preset =
+insurancePresets[location];
+document.getElementById(
+"pensionRate"
+)
+.value =
+preset.pension;
+document.getElementById(
+"medicalRate"
+)
+.value =
+preset.medical;
+document.getElementById(
+"unemploymentRate"
+)
+.value =
+preset.unemployment;
+document.getElementById(
+"housingRate"
+)
+.value =
+preset.housing;
+}
+// ==============================
+// TAX GUIDE
+// ==============================
+function toggleTaxGuide(){
+document
+.getElementById(
+"taxGuide"
+)
+.classList
+.toggle(
+"hidden"
+);
+}
+// ==============================
+// DATE HELPERS
+// ==============================
+function getDate(prefix){
+return new Date(
+Number(
+document.getElementById(prefix+"Year").value
+),
+Number(
+document.getElementById(prefix+"Month").value
+)-1,
+
+Number(
+document.getElementById(prefix+"Day").value
+)
+
+);
+
+
+}
 
 
 
 
+
+
+
+function buildTimeline(start,end){
+
+
+let months=[];
+
+
+let current =
+new Date(
+start.getFullYear(),
+start.getMonth(),
+1
+);
+
+
+
+while(current<=end){
+
+
+months.push({
+
+year:
+current.getFullYear(),
+
+month:
+current.getMonth()+1,
+
+income:0,
+
+bonus:0,
+
+taxPaid:0
+
+});
+
+
+current.setMonth(
+current.getMonth()+1
+);
+
+
+}
+
+
+
+return months;
+
+}
+
+
+
+
+
+
+
+
+
+function calculateTax(amount){
+
+
+for(let bracket of taxBrackets){
+
+
+if(amount<=bracket.limit){
+
+
+return (
+
+amount *
+bracket.rate
+-
+bracket.deduction
+
+);
+
+
+}
+
+}
+
+
+return 0;
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==============================
+// MAIN CALCULATOR
+// ==============================
+function calculate(){
+let mode =
+document.querySelector(
+'input[name="calcMode"]:checked'
+)
+.value;
+let start =
+getDate("start");
+let end =
+getDate("end");
+let timeline =
+buildTimeline(
+start,
+end
+);
+let salary =
+Number(
+document.getElementById(
+"salaryAmount"
+).value
+);
+if(
+document.getElementById(
+"salaryType"
+).value==="annual"
+){
+salary/=12;
+}
+timeline.forEach(month=>{
+month.income =
+salary;
+});
+// ==============================
+// SALARY CHANGES
+// ==============================
+if(mode==="full"){
+let changes=[];
+document
+.querySelectorAll(
+"#salaryAdjustmentContainer .dynamic-row"
+)
+.forEach(row=>{
+changes.push({
+date:
+row.querySelector(
+".adjustmentDate"
+).value,
+amount:
+Number(
+row.querySelector(
+".adjustmentSalary"
+).value
+),
+type:
+row.querySelector(
+".adjustmentType"
+).value
+});
+});
+changes.sort(
+(a,b)=>
+new Date(a.date)
+-
+new Date(b.date)
+);
+timeline.forEach(month=>{
+let currentSalary =
+salary;
+changes.forEach(change=>{
+let parts =
+change.date.split("-");
+if(
+Number(parts[0]) < month.year
+||
+(
+Number(parts[0])===month.year
+&&
+Number(parts[1])<=month.month
+)
+){
+if(change.type==="ongoing"){
+currentSalary =
+change.amount;
+}
+}
+});
+month.income =
+currentSalary;
+});
+// one time payments
+changes.forEach(change=>{
+if(change.type==="one_time"){
+let parts =
+change.date.split("-");
+let target =
+timeline.find(month=>
+month.year===Number(parts[0])
+&&
+month.month===Number(parts[1])
+);
+if(target){
+target.income +=
+change.amount;
+}
+}
+});
+}
+// ==============================
+// TAX
+// ==============================
+let resident =
+document.getElementById(
+"taxResidency"
+)
+.value !== "nonresident";
+let cumulativeIncome=0;
+let cumulativeTax=0;
+let totalGross=0;
+let totalTax=0;
+let totalTakeHome=0;
+let totalBonus=0;
+let totalBonusTax=0;
+let rows="";
+timeline.forEach(month=>{
+let tax=0;
+if(resident){
+if(month.month===1){
+cumulativeIncome=0;
+cumulativeTax=0;
+}
+cumulativeIncome +=
+month.income;
+let taxable =
+Math.max(
+0,
+cumulativeIncome -
+(month.month*5000)
+);
+let yearlyTax =
+calculateTax(
+taxable
+);
+tax =
+yearlyTax -
+cumulativeTax;
+cumulativeTax =
+yearlyTax;
+}
+else{
+let taxable =
+Math.max(
+0,
+month.income-5000
+);
+tax =
+calculateTax(
+taxable
+);
+}
+let takeHome =
+month.income-tax;
+totalGross +=
+month.income;
+totalTax +=
+tax;
+totalTakeHome +=
+takeHome;
+rows +=`
+<tr>
+<td>
+${month.month}/${month.year}
+</td>
+<td>
+¥${month.income.toFixed(0)}
+</td>
+<td>
+¥${tax.toFixed(0)}
+</td>
+<td>
+¥${takeHome.toFixed(0)}
+</td>
+</tr>
+`;
+});
+// ==============================
+// DASHBOARD
+// ==============================
+let contractMonths =
+timeline.length;
+let averageTakeHome =
+totalTakeHome /
+contractMonths;
+document.getElementById("results").innerHTML = `
+
+<div class="hero-result">
+
+    <div class="hero-title">
+        Estimated Monthly Take Home
+    </div>
+
+    <div class="hero-value">
+        ¥${averageTakeHome.toFixed(0)}
+    </div>
+
+    <div class="hero-subtitle">
+        Average monthly amount over the contract period
+    </div>
 
 </div>
 
+<div class="summary-grid">
+
+    <div class="summary-card">
+        <span>Contract Length</span>
+        <strong>${contractMonths} months</strong>
+    </div>
+
+    <div class="summary-card">
+        <span>Gross Income</span>
+        <strong>¥${totalGross.toFixed(0)}</strong>
+    </div>
+
+    <div class="summary-card">
+        <span>Estimated Tax</span>
+        <strong>¥${totalTax.toFixed(0)}</strong>
+    </div>
+
+    <div class="summary-card">
+        <span>Total Take Home</span>
+        <strong>¥${totalTakeHome.toFixed(0)}</strong>
+    </div>
+
+</div>
+
+<div class="results-section">
+
+<h2>Monthly Breakdown</h2>
+
+<table>
+
+<tr>
+
+<th>Month</th>
+
+<th>Gross</th>
+
+<th>Tax</th>
+
+<th>Take Home</th>
+
+</tr>
+
+${rows}
+
+</table>
+
+</div>
+
+`;
+}
+// ==============================
+// PDF EXPORT
+// ==============================
+
+function exportPDF(){
+
+    const { jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF();
 
 
+    let y = 20;
 
 
-<script src="app.js"></script>
+    function addLine(text, size = 12){
+
+        pdf.setFontSize(size);
+
+        pdf.text(
+            text,
+            20,
+            y
+        );
+
+        y += 8;
+
+    }
 
 
+    // TITLE
+
+    addLine(
+        "China Expat Salary Planner",
+        18
+    );
+
+
+    addLine(
+        "Salary Estimate Report",
+        12
+    );
+
+
+    y += 8;
+
+
+    // MAIN RESULT
+
+    addLine(
+        "Estimated Monthly Take Home",
+        14
+    );
+
+
+    addLine(
+        document.querySelector(".hero-value").innerText,
+        18
+    );
+
+
+    y += 8;
+
+
+    // SUMMARY
+
+    addLine(
+        "Summary",
+        14
+    );
+
+
+    const summaryCards =
+    document.querySelectorAll(
+        ".summary-card"
+    );
+
+
+    summaryCards.forEach(card => {
+
+        addLine(
+            card.innerText
+            .replace(/\n/g," - ")
+        );
+
+    });
+
+
+    y += 10;
+
+
+    // MONTHLY TABLE
+// MONTHLY TABLE
+
+pdf.setFontSize(14);
+
+pdf.text(
+    "Monthly Breakdown",
+    20,
+    y
+);
+
+
+let tableData = [];
+
+
+document
+.querySelectorAll("#results table tr")
+.forEach((row,index)=>{
+
+
+    let cells =
+    Array.from(
+        row.querySelectorAll(
+            "th, td"
+        )
+    )
+    .map(cell =>
+        cell.innerText
+    );
+
+
+    if(index > 0){
+
+        tableData.push(cells);
+
+    }
+
+
+});
+
+
+pdf.autoTable({
+
+    startY: y + 5,
+
+    head: [
+        [
+            "Month",
+            "Gross",
+            "Tax",
+            "Take Home"
+        ]
+    ],
+
+    body: tableData,
+
+    margin:{
+        left:20,
+        right:20
+    }
+
+});
+
+
+y =
+pdf.lastAutoTable.finalY + 15;
+
+    addLine(
+        "Disclaimer",
+        12
+    );
+
+
+    pdf.text(
+        "This calculator provides estimates only. Actual salary payments may differ due to employer policies, government regulations and individual circumstances.",
+        20,
+        y,
+        {
+            maxWidth:170
+        }
+    );
+
+
+    pdf.save(
+        "China-Expat-Salary-Report.pdf"
+    );
+
+}
+</script>
 </body>
-
-
 </html>
