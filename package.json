@@ -1,6 +1,6 @@
 {
   "name": "china-expat-salary-planner",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A salary planning tool for expats working in China.",
   "main": "main.js",
   "author": "David Templeton",
