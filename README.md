@@ -1,6 +1,6 @@
 # China Expat Salary Planner
 
-Version: 0.8 Beta
+Version: 0.9.0 Beta
 
 Created by David Templeton
 
@@ -19,7 +19,7 @@ Many expats receive salary information from employers or HR departments that doe
 - How much tax will actually be deducted
 - How monthly take-home pay changes throughout the year
 - How contract start dates affect cumulative taxation
-- How salary changes affect future income
+- How salary changes, bonuses, benefits and social insurance affect real income
 
 This application aims to provide clarity and transparency when evaluating employment offers in China.
 
@@ -53,7 +53,7 @@ Actual results may differ depending on:
 - Employer payroll systems
 - Local regulations
 - Individual circumstances
-- Social insurance requirements
+- Social insurance contribution bases and caps
 
 Always verify final amounts with your employer and official sources.
 
@@ -61,31 +61,23 @@ Always verify final amounts with your employer and official sources.
 
 ## Current Features
 
-Version 0.8 Beta includes:
+Version 0.9.0 Beta includes:
 
 - China salary take-home estimation
 - Contract start and end date planning
-- Monthly salary calculations
-- Annual/monthly salary input options
-- Chinese cumulative tax calculation methods
-- Tax residency selection
-- Social insurance options
-- Untaxed benefit tracking
-- Salary change forecasting
+- Monthly and annual salary input options
+- Chinese cumulative tax calculation (resident)
+- Simplified non-resident tax calculation
+- Tax residency selection with clear guidance
+- Previous calendar income support (for accurate cumulative tax)
+- Salary change / adjustment forecasting
 - Bonus calculation support
+- Untaxed benefit tracking
+- Social insurance employee contribution estimates
 - Professional PDF salary reports
-- Monthly income breakdown reports
+- Monthly income breakdown
 - Fully offline operation
-
----
-
-## Removed Features
-
-Previous versions included scenario import/export functionality.
-
-This feature was removed in v0.8 to simplify the user experience and focus on the core purpose of the application:
-
-**Enter your situation, understand your salary, and generate a clear report.**
+- Improved date pickers and input validation
 
 ---
 
@@ -153,6 +145,19 @@ See LICENSE.txt for full details.
 ---
 
 ## Version History
+
+### v0.9.0 Beta — Accuracy & Reliability Update
+
+Focus:
+- Completed calculation engine (previous income, bonuses, benefits, social insurance)
+- Proper cumulative tax handling for residents
+- Improved date inputs and basic validation
+- Clearer tax residency guidance
+- Social insurance disclaimer
+- UI and code cleanup
+- Better dynamic rows and results display
+
+---
 
 ### v0.8 Beta
 
