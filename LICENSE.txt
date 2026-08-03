@@ -15,11 +15,25 @@ You may not:
 - Include this software in a paid product or service.
 - Redistribute this software as your own original work.
 
-This software is provided "as is" without warranty of any kind.
+This software is provided "as is" without warranty of any kind,
+express or implied, including but not limited to the warranties of
+merchantability, fitness for a particular purpose, and noninfringement.
 
-This application provides estimates only. Salary, tax, payroll, and financial
-calculations may differ from actual results. Users should verify information
-with employers, government sources, and qualified professionals where required.
+Disclaimer:
+
+This application provides estimates only. It is not official payroll
+software, tax advice, or a substitute for professional guidance.
+
+Salary, tax, social insurance, and financial calculations may differ
+from actual results due to employer policies, local regulations,
+government policy changes, individual circumstances, and other factors.
+
+Users should always verify final figures with their employer, HR
+department, payroll provider, and appropriately qualified tax
+professionals where required.
+
+The author accepts no responsibility for decisions made on the basis
+of estimates produced by this software.
 
 Created by:
 David Templeton
